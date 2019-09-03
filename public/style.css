@@ -1,4 +1,8 @@
-body { background-color: #F2F6D0 }
+/* .navbar{
+  height: 10rem;
+} */
+body { background-color: rgb(208, 223, 246) }
+
 #wrapper {
   width: 960px;
   margin-left: auto;
@@ -18,7 +22,7 @@ body { background-color: #F2F6D0 }
 textarea, input {
   display: block;
   width: 100%;
-  background-color: #FCF5C7;
+  background-color: rgb(44, 115, 136);
 }
 input {
   height: 36px;

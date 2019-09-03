@@ -1,13 +1,23 @@
-// Grab the articles as a json
-$.getJSON("/articles", function(data) {
-    // For each one
+$(document).ready( () => {
+  // Document Events
+  $(document).on('click', '#scrapeNew', scrapeArticles);
+  $(document).on("click", "#deleteArticles", deleteArticles);
+  $(document).on("click", ".save", SaveArticle);
+
+function scrapeArticles(){
+  $.getJSON("/scrape").then(function(data){
+  displayArticles()
+  })
+}
+function displayArticles(){
+  // Grab the articles as a json, for each one
+  $.getJSON("/articles", function(data){
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
       $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
     }
-  });
-  
-  
+  })
+}
   // Whenever someone clicks a p tag
   $(document).on("click", "p", function() {
     // Empty the notes from the note section
