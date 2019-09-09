@@ -1,67 +1,59 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <title>Medium Tech Scraper</title>
-    <!-- Jquery -->
-    <script src='https://code.jquery.com/jquery-3.4.1.js'></script>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <!-- CSS Styling -->
-    <link rel='stylesheet' type='text/css' href='style.css'>
-    </style>
-</head>
+<div lang='en'>
 
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Medium Tech Scraper</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a class="homeIndex" href="/">Home</a></li>
-                <li> <a class="savedArticles" href="/saved">Saved Articles</a></li>
-            </ul>
-            <button class="btn btn-danger navbar-btn" id="scrapeNew">Scrape New Articles</button>
-            <button class="btn btn-danger navbar-btn" id="deleteArticles">Delete Articles</button>
-            <!-- <form class="navbar-form navbar-left" action="/action_page.php">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </form> -->
-        </div>
-    </nav>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+        <title>Tech Crunch Scraper</title>
+        <!-- Jquery -->
+        <script src='https://code.jquery.com/jquery-3.4.1.js'></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <!-- CSS Styling -->
+        <link rel='stylesheet' type='text/css' href='style.css'>
+        <script src="https://use.fontawesome.com/0b13248621.js"></script>
+        </style>
+    </head>
 
-    <div id="wrapper">
-        <div id="articles"></div>
-    </div>
-
-    <div class='container'>
-        <!-- header -->
-        <div class='row'>
-            <div class='col-md-10'>
-                <!-- articles -->
-                <div id='articles-wrapper'>
-                    <div id='articles-content'></div>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Tech Crunch Scraper</a>
                 </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a class="homeIndex" href="/">Home</a></li>
+                    <li> <a class="savedA" href="/saved">Saved Articles</a></li>
+                </ul>
+                <button class="btn btn-danger navbar-btn" id="scrapeNew">Scrape New Articles</button>
+                <button class="btn btn-danger navbar-btn" id="deleteArticles">Delete Articles</button>
             </div>
-            <div class='col-md-2'>
+        </nav>
+
+        <div class="introduction">
+            <p>
+                This scraper pulls articles from <a href='https://techcrunch.com/' target='article'>Tech Crunch</a> and
+                allows you to save them and write notes to articles. All of the content scraped on this page belongs to
+                <a href='https://techcrunch.com/' target='article'>Tech Crunch</a>.
+            </p>
+        </div>
+
+        <div id="wrapper">
+            <div id="articles"></div>
+            <div id="notes"></div>
+        </div>
+
+        <footer>
+            <div id='footer'>
+                Copyright © adi868
             </div>
-        </div>
-    </div>
+        </footer>
+</div>
 
-    <footer>
-        <div id='footer'>
-            Copyright © adi868
-        </div>
-    </footer>
-
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="saved.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="app.js"></script>
 </body>

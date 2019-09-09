@@ -1,30 +1,51 @@
 $(document).ready(() => {
-  // Document Events
   $(document).on('click', '#scrapeNew', displayArticles);
   $(document).on("click", "#deleteArticles", deleteArticles);
-  // $(document).on("click", ".save", SaveArticle);
-
-  // function scrapeArticles() {
-  //   $.getJSON("/api/scrape").then(function (data) {
-  //     displayArticles()
-  //     console.log("Scrape successful")
-  //   })
-  // }
-
-  // function scrapeArticles() {
-  //   $.getJSON("/api/articles").then(function (data) {
-  //     displayArticles()
-  //     console.log("Scrape successful")
-  //   })
-  // }
+  $(document).on("click", ".save", saveArticle);
 
   function displayArticles() {
-    // Grab the articles as a json, for each one
+    $("#articles").empty();
+    // Grab the articles as a JSON, for each one
     $.getJSON("/articles", function (data) {
-      for (var i = 0; i < data.length; i++) {
-        $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>" + data[i].body+ "</p>");
-        console.log("display scrape")
+      if (data && data.length) {
+        for (var i = 0; i < data.length; i++) {
+          var article = $("<div class = 'newsArticle'>").append("<h3> <a class = 'articleTitle' href =" + data[i].link + "'>" + data[i].title + "</a></h3>")
+            .append("<p class = 'newsSummary'>" + data[i].body + "</p>")
+            // .append("<p class='article-img' alt='article image'>" + data[i].image + "</p>")
+            .append("<a href='#' class='btn btn-info btn-lg save'><span class='glyphicon glyphicon-floppy-save'></span> Save Article</a>");
+          article.data("_id", data._id)
+          $("#articles").append(article)
+          console.log("Display Scrape")
+        }
+      } else {
+        showEmpty();
       }
     })
   }
 })
+
+function showEmpty() {
+  $("#articles").empty();
+  var empty = $(`<div class="alert alert-primary" role="alert"> Looks like there's no new articles.</div>`)
+  $("#articles").append(empty)
+}
+
+function deleteArticles() {
+  $("#articles").empty();
+}
+
+function saveArticle() {
+  var savedArticle = $(".articleTitle").data();
+  console.log(savedArticle)
+  $(this).parents(".newsArticle").remove();
+  $(this).parents(".newsArticle").saved = true;
+  $.ajax({
+    method: "POST",
+    url: "/api/save/" + $(this).attr("data-id"),
+    data: savedArticle
+  }).then(function (data) {
+    if (data.saved) {
+      initPage();
+    }
+  });
+}

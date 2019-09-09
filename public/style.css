@@ -1,34 +1,31 @@
-/* .navbar{
-  height: 10rem;
-} */
 body { background-color: rgb(208, 223, 246) }
 
+.introduction{
+  margin-top: 100px;
+  margin-left: 30px;
+  width: 600px;
+  height: 100px;
+  font-size: 20px;
+}
+
 #wrapper {
-  width: 960px;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 5%;
+  padding-top: 2%;
 }
 #articles {
   display: inline-block;
   overflow: auto;
-  width: 60%;
+  width: 90%;
   height: 700px;
 }
 #notes {
   float: right;
   width: 30%;
 }
-textarea, input {
-  display: block;
-  width: 100%;
-  background-color: rgb(44, 115, 136);
-}
-input {
-  height: 36px;
-  font-size: 24px;
-}
-textarea {
-  height: 200px;
-  font-size: 18px;
+
+footer{
+  float: right;
+  padding: 10rem;
 }
