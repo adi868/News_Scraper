@@ -1,0 +1,90 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.jumbotron {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  padding: 0;
+  font-family: 'Source Code Pro', monospace;
+  letter-spacing:2px;
+  box-shadow: 10px 5px 20px 2px lightslategrey;
+}
+
+.jumbotron .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: auto;
+  background: linear-gradient(#333, black);
+  opacity: 0.7;
+}
+
+.jumbotron .background-image {
+  height: 100%;
+  background-image: url("../images/techbackground.png");
+  background-size: cover;
+}
+
+.jumbotron .caption {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+}
+
+.jumbotron .caption h1,
+.jumbotron .caption p {
+  color: white;
+}
+
+.jumbotron h1 {
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.jumbotron p {
+  font-size: 20px;
+}
+
+#footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  color:white;
+  margin: 0;
+  font-weight: 800;
+  background: #223646;
+}
+
+.introduction{
+  margin-top: 20px;
+  font-size: 15px;
+  text-align: center;
+}
+
+#wrapper {
+  width: 100%;
+  padding-left:30px;
+  padding-right:30px;
+}
+
+#articles, #savedArticles, #space {
+  display: inline-block;
+  overflow: auto;
+  width: 100%;
+  height: 700px;
+}
+
+#notes {
+  float: right;
+  width: 30%;
+}

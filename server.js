@@ -116,8 +116,18 @@ app.post("/api/save/:id", function(req,res){
 });
 });
 
+app.post("/api/unsave/:id", function(req,res){
+  db.Article.update({_id: req.params.id}, {$set: {saved: false}}, (err, result) => {
+    if (err) {
+        console.log("Unsave Failed!!");
+        console.log(err);
+    }
+    res.json(result)
+});
+});
+
 // Route for grabbing a specific Article by id, populate it with it's note
-app.get("/articles/:id", function (req, res) {
+app.get("/api/articles/:id", function (req, res) {
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
   db.Article.findOne({
       _id: req.params.id
@@ -160,17 +170,31 @@ app.post("/articles/:id", function (req, res) {
     });
 });
 
+app.get("/api/delete", function(req,res){
+  db.Article.deleteMany()
+  .then(function(){
+    res.send("Delete Success!")
+  })
+});
+
+app.get("/api/notes/:id", function(req,res){
+  db.Note.deleteOne({ _id: req.params.id })
+  .then(function(){
+    res.send("Delete Success!")
+  })
+});
+
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/public/index.html'));;
+  res.sendFile(path.join(__dirname + '/public/assets/views/index.html'));;
 });
 
 app.get('/saved',function(req,res) {
-  res.sendFile(path.join(__dirname+'/public/saved.html'));;
+  res.sendFile(path.join(__dirname+'/public/assets/views/saved.html'));;
 });
 
 // Render 404 page for any unmatched routes
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname + '/public/404.html'));;
+  res.sendFile(path.join(__dirname + '/public/assets/views/404.html'));;
 });
 
 // Connect To The Mongo DB using Mongoose
@@ -178,7 +202,6 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://Adina:password1@ds115045
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true
 });
-
 
 // Start The Server
 app.listen(PORT, function () {
