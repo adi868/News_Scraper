@@ -9,14 +9,12 @@ var ArticleSchema = new Schema({
     title: {
         type: String,
         required: true,
-        unique: true
-        
+        unique: { index: { unique: true } }
     },
     link: {
         type: String,
         required: true,
         unique: true
-        
     },
     body: {
         type: String,
@@ -29,6 +27,10 @@ var ArticleSchema = new Schema({
     //     required: true,
     //     // unique: true
     // },
+    // date: {
+    //     type: Date,
+    //     default: Date.now
+    //   },
     saved: {
         type: Boolean,
         default: false

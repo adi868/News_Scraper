@@ -20,7 +20,7 @@ $(document).ready(() => {
             .append("<p class = 'newsSummary'>" + data[i].body + "</p>")
             // .append("<p class='article-img' alt='article image'>" + data[i].image + "</p>")
             .append(
-              "<a href='#' class='btn btn-info btn-lg save'><span class='glyphicon glyphicon-floppy-save'></span> Save Article</a>"
+              `<a href='#' class='btn btn-info btn-lg save' data-id=${data[i]._id}><span class='glyphicon glyphicon-floppy-save'></span> Save Article</a>`
             );
           article.data("_id", data._id);
           $("#articles").append(article);
@@ -47,18 +47,15 @@ function deleteArticles() {
 
 function saveArticle() {
   console.log("Save Clicked");
-  var savedArticle = $(".articleTitle").data();
-  console.log(savedArticle);
-  var dataId = $(this).attr("data-id");
+  console.log(this);
+  var dataId = $(this).data("id");
   console.log(dataId);
   $(this)
     .parents(".newsArticle")
     .remove();
-  $(this).parents(".newsArticle").saved = true;
   $.ajax({
     method: "POST",
-    url: "/api/save/" + $(this).attr("data-id"),
-    data: savedArticle
+    url: "/api/save/" + dataId,
   }).then(function(data) {
     if (data.saved) {
       console.log("saved");

@@ -84,6 +84,10 @@ html {
   height: 700px;
 }
 
+.add-note{
+  margin-left:20px;
+}
+
 #notes {
   float: right;
   width: 30%;

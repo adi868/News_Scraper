@@ -109,7 +109,7 @@ app.get("/api/saved-articles", function(req, res) {
 app.post("/api/save/:id", function(req,res){
   db.Article.update({_id: req.params.id}, {$set: {saved: true}}, (err, result) => {
     if (err) {
-        console.log("Save Failed!!");
+        console.log("Save Failed!");
         console.log(err);
     }
     res.json(result)
@@ -119,7 +119,7 @@ app.post("/api/save/:id", function(req,res){
 app.post("/api/unsave/:id", function(req,res){
   db.Article.update({_id: req.params.id}, {$set: {saved: false}}, (err, result) => {
     if (err) {
-        console.log("Unsave Failed!!");
+        console.log("Unsave Failed!");
         console.log(err);
     }
     res.json(result)
