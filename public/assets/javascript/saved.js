@@ -16,7 +16,7 @@ $(document).ready(function () {
             .append("<p class = 'newsSummary'>" + data[i].body + "</p>")
             // .append("<p class='article-img' alt='article image'>" + data[i].image + "</p>")
             .append("<a href='#' class='btn btn-info btn-lg delete'><span class='glyphicon glyphicon-floppy-save'></span> Delete From Saved</a>")
-            .append("<a href='#' class='btn btn-info btn-lg add-note'><span class='glyphicon glyphicon-plus'></span>Add Note</a>");
+            .append("<a href='#' class='btn btn-info btn-lg add-note'><span class='glyphicon glyphicon-plus'></span> View/Add Note</a>");
           article.data("_id", data._id)
           $("#savedArticles").append(article)
         }
