@@ -2,7 +2,7 @@ $(document).ready(() => {
   $(document).on("click", "#scrapeNew", displayArticles);
   $(document).on("click", "#deleteArticles", deleteArticles);
   $(document).on("click", ".save", saveArticle);
-
+  
   function displayArticles() {
     $("#articles").empty();
     // Grab the articles as a JSON, for each one

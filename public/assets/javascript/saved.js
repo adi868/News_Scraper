@@ -34,48 +34,8 @@ $(document).ready(function () {
 
     function addNote(){
     console.log("Add Note Clicked")
-    $("#modalBox").empty();
-    $('#modalBox').modal('open');
-    var noteId = $(this).data("id");
-    console.log(noteId)
-    $.ajax({
-      method: "GET",
-      url: "/api/articles/" + noteId
-    })
-      .then(function(data) {
-        console.log(data);
-        var modal = `<div class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
-              <h4>Notes For Article: ${data._id} </h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>`
-        $("#modalBox").append(modal);
-        // if (data.note) {
-        // console.log("length is:",data.note.length)
-        // $(".note-container").append("<li class='list-group-item center-align'><h8>" + data.note.body + "</h8><a><i class='material-icons right delete-note' data-id='" + data.note._id + "'>clear</i></a></li>");
-        //   console.log("=========================")
-        //   console.log(data.note)
-        // } else {
-        //   $(".note-container").append("<li class='list-group-item center-align'><h8>No notes for this article yet</h8></li>");
-        // }
-      });
+    $(".modal").modal();
     }
-
 
   // $(document).on("click", ".save-note", function() {
   //   var thisId = $(this).attr("data-id");
