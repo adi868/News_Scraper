@@ -3,11 +3,15 @@ $(document).ready(function () {
   // $(document).on("click", ".delete-note", deleteNote);
   // $(document).on("click", ".delete", articleNotes);
   $(document).on("click", ".delete", deleteSaved);
-  $(document).on("click", ".add-note", addNote);
+  $(document).on("click", ".show-note", showNote);
+  // $(document).on("click", ".btn.save", handleNoteSave);
+  // $(document).on("click", ".btn.note-delete", handleNoteDelete);
 
   function showSavedArticles() {
     $.getJSON("/api/saved-articles", function (data) {
+      //div rendering all the articles in
       $("#savedArticles").empty()
+      //if we have headlines, render them to the page
       if (data && data.length) {
         // For each one
         for (var i = 0; i < data.length; i++) {
@@ -16,7 +20,7 @@ $(document).ready(function () {
             .append("<p class = 'newsSummary'>" + data[i].body + "</p>")
             // .append("<p class='article-img' alt='article image'>" + data[i].image + "</p>")
             .append("<a href='#' class='btn btn-info btn-lg delete'><span class='glyphicon glyphicon-floppy-save'></span> Delete From Saved</a>")
-            .append("<a href='#' class='btn btn-info btn-lg add-note'><span class='glyphicon glyphicon-plus'></span> View/Add Note</a>");
+            .append("<a href='#' class='btn btn-info btn-lg show-note'><span class='glyphicon glyphicon-plus'></span> View/Add Note</a>");
           article.data("_id", data._id)
           $("#savedArticles").append(article)
         }
@@ -27,37 +31,30 @@ $(document).ready(function () {
   }
 
   function showEmpty() {
-    $("#showArticles").empty();
-    var empty = $(`<div class="alert alert-primary" role="alert"> Looks like there's no saved articles.</div>`)
-    $("#showArticles").append(empty)
+    $("#savedArticles").empty();
+    var empty = $(
+      [
+        "<div class='alert alert-info text-center'>",
+        "<h4>Uh Oh. Looks like there's no saved articles.</h4>",
+        "</div>",
+        "<div class='card'>",
+        "<div class='card-header text-center'>",
+        "<h5>Would You Like to Browse Available Articles?</h5>",
+        "</div>",
+        "<div class='card-body text-center'>",
+        "<h5><a href='/'>Browse Articles</a></h5>",
+        "</div>",
+        "</div>"
+      ].join("")
+    );
+     $("#savedArticles").append(empty)
   }
 
-    function addNote(){
+    function showNote(){
     console.log("Add Note Clicked")
     $(".modal").modal();
     }
-
-  // $(document).on("click", ".save-note", function() {
-  //   var thisId = $(this).attr("data-id");
-  //   $.ajax({
-  //     method: "POST",
-  //     url: "/articles/" + thisId,
-  //     data: {
-  //       body: $(".notes").val().trim()
-  //     }
-  //   })
-  //     .then(function(data) {
-  //       console.log(data);
-  //       $(".notes").empty();
-  //     });
-  // });
-
-  // function deleteNote() {
-  //   var noteToDelete = $(this).attr("data-id");
-  //   $.get("/api/notes/" + noteToDelete).then(function() {
-  //     $("#modal1").modal('close');
-  //   });
-  // }
+//add delete note comment
 
   function deleteSaved() {
     console.log("Unsave Clicked!")
@@ -67,11 +64,10 @@ $(document).ready(function () {
       .parents(".newsArticle")
       .remove();
     $.ajax({
-      method: "POST",
+      method: "PUT",
       url: "/api/unsave/" + savedArticle,
     }).then(function (data) {
       if (!data.saved) {
-        showSavedArticles();
         console.log("unsaved")
       }
     });

@@ -198,7 +198,8 @@ app.get("*", function (req, res) {
 });
 
 // Connect To The Mongo DB using Mongoose
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://Adina:password1@ds115045.mlab.com:15045/heroku_p59bbc54";
+//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://Adina:password1@ds115045.mlab.com:15045/heroku_p59bbc54";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true
 });

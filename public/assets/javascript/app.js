@@ -36,7 +36,16 @@ $(document).ready(() => {
 function showEmpty() {
   $("#articles").empty();
   var empty = $(
-    `<div class="alert alert-primary" role="alert"> Looks like there's no new articles.</div>`
+    [
+      "<div class='alert alert-info text-center'>",
+      "<h4>Uh Oh. Looks like there's no new articles.</h4>",
+      "</div>",
+      "<div class='card'>",
+      "<div class='card-header text-center'>",
+      "<h5>Try Scraping New Articles! Or<a href='/saved'> Go to Saved Articles</a></h5>",
+      "</div>",
+      "</div>"
+    ].join("")
   );
   $("#articles").append(empty);
 }
