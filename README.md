@@ -1,3 +1,3 @@
 # News_Scraper
 
-# Technologies
+### Technologies
